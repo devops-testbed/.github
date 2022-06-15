@@ -10,9 +10,23 @@ on:
   delete:
   deployment:
   push:
-    branches: [ $default-branch ]
+    branches-ignore:    
+      - 'mona/octocat'
+      - 'releases/**-alpha'
+    tags-ignore:        
+      - v2
+      - v1.*
+    paths-ignore:
+      - 'docs/**'
   pull_request:
-    branches: [ $default-branch ]
+    branches: 
+      - $default-branch
+      - '!releases/**-alpha'
+    paths:
+      - '**.js'
+    tags:        
+      - v2
+      - v1.*
   workflow_dispatch:
 
 jobs:
