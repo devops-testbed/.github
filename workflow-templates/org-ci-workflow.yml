@@ -1,9 +1,9 @@
 name: Org CI
 on:
   push:
-    branches: [ "main" ]
+    branches: [ $default-branch ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ $default-branch ]
   workflow_dispatch:
 
 jobs:
