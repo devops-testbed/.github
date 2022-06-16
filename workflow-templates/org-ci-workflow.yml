@@ -46,6 +46,8 @@ on:
         description: "The second job output"
         value: ${{ jobs.build.outputs.job_output2 }}
 jobs:
+  call-rswflw-repo-workflow:
+    uses: devops-testbed/intake/.github/workflows/main.yml@main
   test_schedule:
     runs-on: ubuntu-latest
     outputs:
