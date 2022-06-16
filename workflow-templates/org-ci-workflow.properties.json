@@ -1,6 +1,6 @@
 {
-    "name": "devops-testbed Organization Workflow",
-    "description": "devops-testbed Organization CI starter workflow.",
+    "name": "Organization Checks",
+    "description": "Add Organization Checks.",
     "iconName": "Code to cloud",
     "categories": [
         "Python"
