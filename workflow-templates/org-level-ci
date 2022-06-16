@@ -1,0 +1,37 @@
+name: org-checks
+on:
+  workflow_call:
+  workflow_dispatch: {}   
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@main
+       
+      - name: Get project data
+        env:
+          ORGANIZATION: "devops-testbed"
+          PROJECT_NUMBER: 1
+        run: echo $ORGANIZATION $PROJECT_NUMBER
+        
+      - name: Add PR to project
+        env:
+          PR_ID: ${{ github.event.pull_request.node_id }}
+        run: echo $PR_ID
+  job2:
+    needs: [job1, job2]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get date
+        run: echo "DATE=$(date +"%Y-%m-%d")" >> $GITHUB_ENV
+        
+  job2-calling-composite:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:     
+      - name: use composite devops-testbed/intake@main
+        uses: devops-testbed/intake@main
+
+      - name: use repo folder composite devops-testbed/intake/folder-action@main
+        uses: devops-testbed/intake/folder-action@main
