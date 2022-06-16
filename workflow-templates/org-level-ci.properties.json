@@ -1,7 +1,7 @@
 {
     "name": "devops-testbed Add Organization Checks",
     "description": "Organization CI starter workflow.",
-    "iconName": "example-icon",
+    "iconName": "Vulnerability-data",
     "categories": [
         "Python"
     ],
