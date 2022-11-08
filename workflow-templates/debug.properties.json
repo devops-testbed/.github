@@ -1,0 +1,12 @@
+{
+    "name": "debug",
+    "description": "Add debug.",
+    "iconName": "debug",
+    "categories": [
+        "Python"
+    ],
+    "filePatterns": [
+        "package.json$",
+        "README*"
+    ]
+}
