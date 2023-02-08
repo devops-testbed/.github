@@ -17,4 +17,4 @@ jobs:
       - name: Run Required Check
         run: echo Hello from required org action
       - name: List Runners
-        run : gh api /orgs/devops-testbed/actions/runners
+        run : gh api /repos/${{github.repository}}/actions/runners
