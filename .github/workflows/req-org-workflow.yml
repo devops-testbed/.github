@@ -5,6 +5,8 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+  schedule: 
+    - cron: "*/5 * * * *"
 
 jobs:
   build:
@@ -12,3 +14,5 @@ jobs:
     steps:
       - name: Run Required Check
         run: echo Hello from required org action
+      - name: List Runners
+        run : gh api /orgs/devops-testbed/actions/runners
