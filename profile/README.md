@@ -9,5 +9,4 @@
 
  ### 👩‍💻 Useful resources 
 
-[![A_Sentient::6_AI_robot::5_advisor::3_helping::7_a_child::5_with_math::1,_Ba 657494101 phmdjrny4](https://user-images.githubusercontent.com/10250297/221475706-e36af742-6741-45b0-9788-d4b1876263dd.png)](https://medium.sankhe.com)
-
+[![A_sentient::5_AI_robot::3_advisor::1_guiding::3_a_child::4_in_a_sci-fi::4_f 2442954216 phmdjrny4](https://user-images.githubusercontent.com/10250297/221476147-c8d071e8-597d-469d-9d41-5dfdaccf556c.png)](https://medium.sankhe.com)
