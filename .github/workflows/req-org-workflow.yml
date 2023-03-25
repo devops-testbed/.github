@@ -20,4 +20,4 @@ jobs:
       - name: Run Required Check
         run: echo Hello from required org action
       - name: List Runners
-        run : gh api /repos/$REPO/actions/runners
+        run : gh api /repos/$REPO/actions/runners || echo 0
