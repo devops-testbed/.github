@@ -1,4 +1,4 @@
-name: Dynamic Language Workflow
+name: Required Tests Workflow
 
 on:
   push:
