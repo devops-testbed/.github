@@ -1,5 +1,5 @@
 name: Run Name Workflow
-
+run-name: ${{ github.actor }} is running tests in ${{ github.repository }} on ${{ github.ref }}
 on: [push, pull_request]
 
 jobs:
