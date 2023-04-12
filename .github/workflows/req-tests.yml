@@ -23,11 +23,11 @@ jobs:
         id: set_language
         run: |
           if [ -f package.json ]; then
-            echo "name=language::javascript" >> $GITHUB_OUTPUT
+            echo "language=javascript" >> $GITHUB_OUTPUT
           elif [ -f requirements.txt ]; then
-            echo "name=language::python" >> $GITHUB_OUTPUT
+            echo "language=python" >> $GITHUB_OUTPUT
           else
-            echo "name=language::none" >> $GITHUB_OUTPUT
+            echo "language=none" >> $GITHUB_OUTPUT
           fi
 
   run_javascript_tests:
