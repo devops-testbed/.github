@@ -1,0 +1,63 @@
+name: Dynamic Language Workflow
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      language:
+        description: 'Project language'
+        required: true
+        default: 'none'
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'workflow_dispatch'
+    outputs:
+      language: ${{ steps.set_language.outputs.language }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Determine project language
+        id: set_language
+        run: |
+          if [ -f package.json ]; then
+            echo "::set-output name=language::javascript"
+          elif [ -f requirements.txt ]; then
+            echo "::set-output name=language::python"
+          else
+            echo "::set-output name=language::none"
+          fi
+
+  run_javascript_tests:
+    needs: setup
+    runs-on: ubuntu-latest
+    if: needs.setup.outputs.language == 'javascript' || (github.event_name == 'workflow_dispatch' && github.event.inputs.language == 'javascript')
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
+
+  run_python_tests:
+    needs: setup
+    runs-on: ubuntu-latest
+    if: needs.setup.outputs.language == 'python' || (github.event_name == 'workflow_dispatch' && github.event.inputs.language == 'python')
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run tests
+        run: pytest
