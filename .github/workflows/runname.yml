@@ -1,0 +1,23 @@
+name: Run Name Workflow
+
+on: [push, pull_request]
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set dynamic run name
+        id: set_run_name
+        run: |
+          repo_name=$(basename $GITHUB_REPOSITORY)
+          event_type=$GITHUB_EVENT_NAME
+          date=$(date '+%Y-%m-%d')
+          run_name="${repo_name}-${event_type}-${date}"
+          echo "::set-output name=run_name::${run_name}"
+          echo "RUN_NAME=${run_name}" >> $GITHUB_ENV
+          echo "RUN_NAME=${run_name}" >> $GITHUB_OUTPUT
+
+      - name: Use dynamic run name
+        run: |
+          echo "Dynamic run name is: $RUN_NAME"
+          # Use the dynamic run name in your commands or scripts
