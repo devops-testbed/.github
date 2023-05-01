@@ -20,7 +20,8 @@ on:
       - 'docs/**'
   pull_request:
     branches: 
-      - "main"
+      - $default-branch
+      - $protected-branches
       - '!releases/**-alpha'
     paths:
       - '**.js'
@@ -29,7 +30,7 @@ on:
       - v1.*
   workflow_dispatch:
   schedule:
-    - cron: '30 5 * * 1,3'
+    - cron: $cron-daily
     - cron: '30 5 * * 2,4'
   workflow_call:
     inputs:
