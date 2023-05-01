@@ -1,7 +1,7 @@
 {
     "name": "debug",
     "description": "Add debug.",
-    "iconName": "debug",
+    "iconName": "octicon person",
     "categories": [
         "Python"
     ],
